@@ -28,13 +28,21 @@ function isGitHubUser(value: unknown): value is GitHubUser {
   );
 }
 
+function getGitHubHeaders(): HeadersInit {
+  const headers: HeadersInit = {
+    Accept: "application/vnd.github.v3+json",
+  };
+  if (process.env.GITHUB_TOKEN) {
+    headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
+  }
+  return headers;
+}
+
 export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
   const url = `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
 
   const response = await fetch(url, {
-    headers: {
-      Accept: "application/vnd.github.v3+json",
-    },
+    headers: getGitHubHeaders(),
     next: { revalidate: 3600 },
   });
 
@@ -57,9 +65,7 @@ export async function fetchGitHubUser(): Promise<GitHubUser> {
   const url = `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}`;
 
   const response = await fetch(url, {
-    headers: {
-      Accept: "application/vnd.github.v3+json",
-    },
+    headers: getGitHubHeaders(),
     next: { revalidate: 3600 },
   });
 
