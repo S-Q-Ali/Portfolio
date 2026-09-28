@@ -9,6 +9,7 @@ export interface GitHubRepo {
   html_url: string;
   topics: string[];
   fork: boolean;
+  archived?: boolean;
 }
 
 export interface GitHubUser {

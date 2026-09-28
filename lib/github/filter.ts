@@ -1,20 +1,50 @@
 import type { GitHubRepo, PortfolioProject } from "./types";
 
+const SKIP_PATTERNS = [
+  /^s-q-ali$/i,
+  /^portfolio$/i,
+  /readme/i,
+  /user-guide/i,
+  /userguide/i,
+  /course/i,
+  /internship/i,
+  /practice/i,
+  /demo/i,
+  /scratch/i,
+  /test-repo/i,
+  /hello-world/i,
+  /my-first/i,
+  /js-basics/i,
+  /web-based-projects$/i,
+];
+
+function shouldSkip(repo: GitHubRepo): boolean {
+  if (repo.fork || repo.archived) return true;
+  if (SKIP_PATTERNS.some((p) => p.test(repo.name))) return true;
+  if (!repo.description && repo.stargazers_count === 0 && repo.forks_count === 0) {
+    const daysSinceUpdate = (Date.now() - new Date(repo.updated_at).getTime()) / (1000 * 60 * 60 * 24);
+    if (daysSinceUpdate > 60) return true;
+  }
+  return false;
+}
+
 function calculateScore(repo: GitHubRepo): number {
   const daysSinceUpdate = Math.max(
     0,
     (Date.now() - new Date(repo.updated_at).getTime()) / (1000 * 60 * 60 * 24)
   );
-  const recencyScore = Math.max(0, 30 - daysSinceUpdate) / 30;
+  const recencyScore = Math.max(0, 90 - daysSinceUpdate) / 90;
   const starScore = Math.min(repo.stargazers_count, 50) / 50;
   const forkScore = Math.min(repo.forks_count, 20) / 20;
+  const descriptionScore = repo.description ? 1 : 0;
+  const languageScore = repo.language ? 0.5 : 0;
 
-  return starScore * 0.2 + forkScore * 0.2 + recencyScore * 0.6;
+  return descriptionScore * 0.35 + recencyScore * 0.25 + starScore * 0.15 + forkScore * 0.15 + languageScore * 0.1;
 }
 
 export function filterAndRankProjects(repos: GitHubRepo[]): PortfolioProject[] {
   return repos
-    .filter((repo) => !repo.fork)
+    .filter((repo) => !shouldSkip(repo))
     .map((repo) => ({
       id: repo.id,
       name: repo.name,
