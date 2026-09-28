@@ -33,7 +33,7 @@ export default function StrengthsSection() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold tracking-tight sm:text-3xl"
         >
-          Strengths & <span className="text-accent">Growth Areas</span>
+          Strengths & <span className="text-accent-glow">Growth Areas</span>
         </motion.h2>
 
         <div className="mt-8 grid gap-6 md:grid-cols-2">
@@ -48,7 +48,7 @@ export default function StrengthsSection() {
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className="flex items-start gap-2 text-sm text-text-dim"
                 >
-                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent" />
+                  <CheckCircle className="mt-0.5 h-4 w-4 shrink-0 text-accent-glow" />
                   {item}
                 </motion.li>
               ))}
@@ -66,7 +66,7 @@ export default function StrengthsSection() {
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                   className="flex items-start gap-2 text-sm text-text-dim"
                 >
-                  <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-accent/60" />
+                  <TrendingUp className="mt-0.5 h-4 w-4 shrink-0 text-accent-glow/60" />
                   {item}
                 </motion.li>
               ))}

@@ -1,15 +1,16 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #0a0c1b;
-  --color-surface: #0d142b;
-  --color-surface-light: #131c3a;
-  --color-border: #1a2340;
-  --color-accent: #00a8ff;
-  --color-accent-glow: #33bbff;
-  --color-accent-dim: #0066aa;
-  --color-text: #e8f0ff;
-  --color-text-dim: #727b84;
+  --color-bg: #18171d;
+  --color-surface: #1f1e2e;
+  --color-surface-light: #2a2940;
+  --color-border: #3d3b5c;
+  --color-accent: #463671;
+  --color-accent-glow: #ebbaf2;
+  --color-accent-dim: #2a2145;
+  --color-text: #fbeffa;
+  --color-text-dim: #9d97b8;
+  --color-gold: #e8c28d;
   --color-success: #00ff88;
   --color-warning: #ffaa00;
   --color-danger: #ff4466;
@@ -31,26 +32,26 @@ body {
 
 ::selection {
   background-color: var(--color-accent);
-  color: var(--color-bg);
+  color: var(--color-text);
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-accent);
+  outline: 2px solid var(--color-accent-glow);
   outline-offset: 2px;
 }
 
 .glass-panel {
   background: linear-gradient(
     135deg,
-    rgba(13, 20, 43, 0.8) 0%,
-    rgba(19, 28, 58, 0.6) 100%
+    rgba(31, 30, 46, 0.85) 0%,
+    rgba(42, 41, 64, 0.65) 100%
   );
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(0, 168, 255, 0.15);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(235, 186, 242, 0.12);
   box-shadow:
-    0 0 20px rgba(0, 168, 255, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    0 0 25px rgba(70, 54, 113, 0.15),
+    inset 0 1px 0 rgba(251, 239, 250, 0.05);
 }
 
 .glass-panel-hover {
@@ -58,19 +59,19 @@ body {
 }
 
 .glass-panel-hover:hover {
-  border-color: rgba(0, 168, 255, 0.4);
+  border-color: rgba(235, 186, 242, 0.35);
   box-shadow:
-    0 0 30px rgba(0, 168, 255, 0.15),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    0 0 40px rgba(70, 54, 113, 0.3),
+    inset 0 1px 0 rgba(251, 239, 250, 0.1);
   transform: translateY(-2px);
 }
 
 .glow-text {
-  text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+  text-shadow: 0 0 15px rgba(235, 186, 242, 0.4);
 }
 
 .glow-border {
-  box-shadow: 0 0 15px rgba(0, 168, 255, 0.3);
+  box-shadow: 0 0 20px rgba(235, 186, 242, 0.25);
 }
 
 .scan-line {
@@ -88,7 +89,7 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 168, 255, 0.5),
+    rgba(235, 186, 242, 0.4),
     transparent
   );
   animation: scan 3s linear infinite;
@@ -108,10 +109,10 @@ body {
 @keyframes pulse-glow {
   0%,
   100% {
-    box-shadow: 0 0 5px rgba(0, 168, 255, 0.3);
+    box-shadow: 0 0 5px rgba(235, 186, 242, 0.2);
   }
   50% {
-    box-shadow: 0 0 20px rgba(0, 168, 255, 0.6);
+    box-shadow: 0 0 25px rgba(235, 186, 242, 0.5);
   }
 }
 

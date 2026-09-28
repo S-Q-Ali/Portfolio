@@ -54,7 +54,7 @@ export default function SkillsSection() {
           transition={{ duration: 0.5 }}
           className="text-2xl font-bold tracking-tight sm:text-3xl"
         >
-          Skills & <span className="text-accent">Expertise</span>
+          Skills & <span className="text-accent-glow">Expertise</span>
         </motion.h2>
 
         <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">

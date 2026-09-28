@@ -13,7 +13,7 @@ export default function XPBar({
   label,
   value,
   max = 100,
-  color = "bg-accent",
+  color = "bg-accent-glow",
 }: XPBarProps) {
   const percentage = Math.min((value / max) * 100, 100);
 
@@ -21,7 +21,7 @@ export default function XPBar({
     <div className="space-y-1">
       <div className="flex items-center justify-between text-sm">
         <span className="text-text-dim">{label}</span>
-        <span className="font-mono text-accent">{value}%</span>
+        <span className="font-mono text-accent-glow">{value}%</span>
       </div>
       <div className="h-2 overflow-hidden rounded-full bg-surface-light">
         <motion.div

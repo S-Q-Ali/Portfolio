@@ -26,8 +26,8 @@ export default function SystemWindow({
     >
       {title && (
         <div className="mb-4 flex items-center gap-2">
-          <div className="h-2 w-2 rounded-full bg-accent animate-pulse-glow" />
-          <h3 className="font-mono text-sm font-semibold text-accent uppercase tracking-wider">
+          <div className="h-2 w-2 rounded-full bg-accent-glow animate-pulse-glow" />
+          <h3 className="font-mono text-sm font-semibold text-accent-glow uppercase tracking-wider">
             {title}
           </h3>
         </div>

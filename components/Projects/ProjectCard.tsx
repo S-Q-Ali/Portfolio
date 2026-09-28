@@ -24,7 +24,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-text transition-colors hover:text-accent"
+            className="text-text transition-colors hover:text-accent-glow"
           >
             {project.name}
           </a>
@@ -46,14 +46,14 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </p>
 
       <div className="mt-4 flex items-center justify-between">
-        <span className="inline-flex items-center rounded-md bg-surface-light px-2 py-1 font-mono text-xs text-accent">
+        <span className="inline-flex items-center rounded-md bg-surface-light px-2 py-1 font-mono text-xs text-accent-glow">
           {project.language}
         </span>
         <a
           href={project.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-1 text-xs text-text-dim transition-colors hover:text-accent"
+          className="flex items-center gap-1 text-xs text-text-dim transition-colors hover:text-accent-glow"
         >
           <ExternalLink className="h-3 w-3" />
           View

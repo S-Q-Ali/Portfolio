@@ -19,13 +19,13 @@ export default function Hero({ user }: HeroProps) {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="relative"
           >
-            <div className="absolute -inset-1 rounded-full bg-accent/20 blur-lg" />
+            <div className="absolute -inset-1 rounded-full bg-accent/30 blur-lg" />
             <img
               src={user.avatar_url}
               alt={`${user.login}'s avatar`}
               width={128}
               height={128}
-              className="relative rounded-full border-2 border-accent"
+              className="relative rounded-full border-2 border-accent-glow"
             />
           </motion.div>
 
@@ -36,7 +36,7 @@ export default function Hero({ user }: HeroProps) {
             className="space-y-4 text-center"
           >
             <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              <span className="glow-text text-accent">{user.login}</span>
+              <span className="glow-text text-accent-glow">{user.login}</span>
             </h1>
             <p className="text-xl text-text-dim sm:text-2xl">
               {user.bio ?? "Full-Stack Developer"}
@@ -86,10 +86,10 @@ function StatCard({
 }) {
   return (
     <div className="glass-panel rounded-lg px-6 py-4 text-center">
-      <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent/10 text-accent">
+      <div className="mx-auto mb-2 flex h-10 w-10 items-center justify-center rounded-full bg-accent/20 text-accent-glow">
         {icon}
       </div>
-      <p className="font-mono text-2xl font-bold text-accent">{value}</p>
+      <p className="font-mono text-2xl font-bold text-accent-glow">{value}</p>
       <p className="text-sm text-text-dim">{label}</p>
     </div>
   );

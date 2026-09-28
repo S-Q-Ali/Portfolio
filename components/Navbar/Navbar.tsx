@@ -17,7 +17,7 @@ export default function Navbar() {
         <div className="flex h-16 items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 font-mono text-lg font-bold text-accent transition-colors hover:text-accent-glow"
+            className="flex items-center gap-2 font-mono text-lg font-bold text-accent-glow transition-colors hover:text-accent-glow/80"
           >
             <Terminal className="h-5 w-5" />
             s-q-ali
@@ -30,7 +30,7 @@ export default function Navbar() {
                 href={link.href}
                 className={`rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                   pathname === link.href
-                    ? "bg-surface text-accent"
+                    ? "bg-surface text-accent-glow"
                     : "text-text-dim hover:bg-surface hover:text-text"
                 }`}
               >
@@ -65,7 +65,7 @@ export default function Navbar() {
                   onClick={() => setIsOpen(false)}
                   className={`block rounded-md px-3 py-2 text-sm font-medium transition-colors ${
                     pathname === link.href
-                      ? "bg-surface text-accent"
+                      ? "bg-surface text-accent-glow"
                       : "text-text-dim hover:bg-surface hover:text-text"
                   }`}
                 >
