@@ -27,7 +27,7 @@ export default async function HomePage() {
             </h2>
             <a
               href="/projects"
-              className="text-sm font-medium text-accent hover:text-accent-dim transition-colors"
+              className="text-sm font-medium text-accent hover:text-accent-glow transition-colors"
             >
               View all →
             </a>
