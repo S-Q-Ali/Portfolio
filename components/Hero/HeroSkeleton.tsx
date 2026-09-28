@@ -10,7 +10,7 @@ export default function HeroSkeleton() {
             <div className="mx-auto h-4 w-32 animate-pulse rounded-md bg-surface" />
           </div>
           <div className="flex gap-4">
-            {[1, 2, 3, 4].map((i) => (
+            {[1, 2, 3].map((i) => (
               <div key={i} className="h-20 w-24 animate-pulse rounded-md bg-surface" />
             ))}
           </div>

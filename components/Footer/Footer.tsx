@@ -53,7 +53,7 @@ export default function Footer() {
     <footer className="border-t border-border">
       <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-4 sm:flex-row sm:justify-between">
-          <p className="text-sm text-text-secondary">
+          <p className="text-sm text-text-dim">
             &copy; {new Date().getFullYear()} Syed Qasim Ali. All rights reserved.
           </p>
 
@@ -64,7 +64,7 @@ export default function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-text-secondary transition-colors hover:text-accent"
+                className="text-text-dim transition-colors hover:text-accent"
                 aria-label={social.name}
               >
                 {social.icon}
