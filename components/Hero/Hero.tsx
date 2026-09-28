@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Users, BookOpen } from "lucide-react";
+import { MapPin, Users, BookOpen, Shield } from "lucide-react";
 import type { GitHubUser } from "@/lib/github/types";
 
 interface HeroProps {
@@ -27,6 +27,9 @@ export default function Hero({ user }: HeroProps) {
               height={128}
               className="relative rounded-full border-2 border-accent-glow"
             />
+            <div className="absolute -bottom-2 -right-2 rounded-full bg-gold/20 p-1.5 border border-gold/40">
+              <Shield className="h-4 w-4 text-gold" />
+            </div>
           </motion.div>
 
           <motion.div
@@ -35,9 +38,14 @@ export default function Hero({ user }: HeroProps) {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="space-y-4 text-center"
           >
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
-              <span className="glow-text text-accent-glow">{user.login}</span>
-            </h1>
+            <div className="flex items-center justify-center gap-3">
+              <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl">
+                <span className="glow-text text-accent-glow">{user.login}</span>
+              </h1>
+              <span className="rounded-full bg-gold/10 px-3 py-1 text-sm font-semibold text-gold border border-gold/30">
+                S-Rank
+              </span>
+            </div>
             <p className="text-xl text-text-dim sm:text-2xl">
               {user.bio ?? "Full-Stack Developer"}
             </p>
