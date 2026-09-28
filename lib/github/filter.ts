@@ -9,12 +9,12 @@ function calculateScore(repo: GitHubRepo): number {
   const starScore = Math.min(repo.stargazers_count, 50) / 50;
   const forkScore = Math.min(repo.forks_count, 20) / 20;
 
-  return starScore * 0.5 + forkScore * 0.3 + recencyScore * 0.2;
+  return starScore * 0.2 + forkScore * 0.2 + recencyScore * 0.6;
 }
 
 export function filterAndRankProjects(repos: GitHubRepo[]): PortfolioProject[] {
   return repos
-    .filter((repo) => !repo.fork && repo.stargazers_count > 0)
+    .filter((repo) => !repo.fork)
     .map((repo) => ({
       id: repo.id,
       name: repo.name,
