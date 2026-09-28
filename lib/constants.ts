@@ -3,7 +3,7 @@ export const GITHUB_USERNAME = "s-q-ali";
 export const SOCIAL_LINKS = {
   github: "https://github.com/s-q-ali",
   linkedin: "https://linkedin.com/in/s-qasim-ali",
-  instagram: "https://www.instagram.com/sqali.dev",
+  instagram: "https://www.instagram.com/sqali_dev",
   email: "mailto:syedqasim963@gmail.com",
 } as const;
 
