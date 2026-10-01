@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, GitFork, ExternalLink } from "lucide-react";
+import { Star, GitFork, ExternalLink, Code, Play } from "lucide-react";
 import type { PortfolioProject } from "@/lib/github/types";
 import { projectCases } from "@/lib/project-cases";
 import GoldBadge from "@/components/GoldBadge/GoldBadge";
@@ -18,10 +18,10 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
 
   return (
     <motion.article
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.4, delay: index * 0.1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
       className="glass-panel glass-panel-hover group rounded-lg p-6"
     >
       <div className="flex items-start justify-between gap-4">
@@ -50,14 +50,31 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         </div>
       </div>
 
-      <p className="mt-2 text-sm text-text-dim line-clamp-2">
-        {caseStudy?.problem ?? project.description}
-      </p>
-
       {caseStudy && (
-        <div className="mt-3 space-y-1 text-xs text-text-dim">
-          <p><span className="text-accent-glow">Outcome:</span> {caseStudy.outcome}</p>
-        </div>
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          whileInView={{ opacity: 1, height: "auto" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: index * 0.1 + 0.2 }}
+          className="mt-4 space-y-3"
+        >
+          <div>
+            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Problem</p>
+            <p className="mt-1 text-sm text-text-dim">{caseStudy.problem}</p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Role</p>
+            <p className="mt-1 text-sm text-text-dim">{caseStudy.role}</p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Method</p>
+            <p className="mt-1 text-sm text-text-dim">{caseStudy.method}</p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Outcome</p>
+            <p className="mt-1 text-sm text-text-dim">{caseStudy.outcome}</p>
+          </div>
+        </motion.div>
       )}
 
       <div className="mt-4 flex items-center justify-between">
@@ -70,19 +87,19 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               href={caseStudy.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 text-xs text-gold hover:text-gold/80 transition-colors"
+              className="flex items-center gap-1 rounded-md bg-gold/10 px-3 py-1.5 text-xs font-medium text-gold border border-gold/30 hover:bg-gold/20 transition-colors"
             >
-              <ExternalLink className="h-3 w-3" />
-              Demo
+              <Play className="h-3 w-3" />
+              Live Demo
             </a>
           )}
           <a
             href={project.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs text-text-dim transition-colors hover:text-accent-glow"
+            className="flex items-center gap-1 rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent-glow border border-accent/30 hover:bg-accent/20 transition-colors"
           >
-            <ExternalLink className="h-3 w-3" />
+            <Code className="h-3 w-3" />
             Code
           </a>
         </div>

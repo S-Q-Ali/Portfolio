@@ -23,6 +23,7 @@ export const projectCases: ProjectCase[] = [
     role: "Full-stack developer — built scheduling engine, multi-platform API integrations, analytics dashboard.",
     method: "HTML/CSS/JS with platform APIs (Twitter, LinkedIn, Instagram), cron-based scheduling, analytics tracking.",
     outcome: "Unified scheduling for 5+ platforms. 40% time saved on content distribution.",
+    demo: "https://flowpost-studio.vercel.app",
     featured: true,
   },
   {
@@ -39,6 +40,7 @@ export const projectCases: ProjectCase[] = [
     role: "Full-stack developer — built lead management system, tracking pipeline, follow-up automation.",
     method: "JavaScript with lead scoring, pipeline management, automated follow-up workflows.",
     outcome: "Streamlined lead tracking for sales teams. 35% improvement in follow-up response time.",
+    demo: "https://leads-d3k9.vercel.app/",
   },
   {
     name: "Migration-in-GHL",
@@ -53,5 +55,6 @@ export const projectCases: ProjectCase[] = [
     role: "Full-stack developer — built OTP extraction engine, message parsing, auto-fill system.",
     method: "JavaScript with message parsing, regex-based OTP detection, browser extension integration.",
     outcome: "95% OTP detection accuracy. Supports SMS, email, and messaging platforms.",
+    demo: "https://otp-extractor.vercel.app",
   },
 ];
