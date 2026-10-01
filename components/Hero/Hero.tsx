@@ -66,7 +66,7 @@ export default function Hero({ user }: HeroProps) {
             <div className="glass-panel relative overflow-hidden rounded-2xl">
               <div className="aspect-[3/4] w-full">
                 <img
-                  src="/assets/BG.jpeg"
+                  src="Portfolio\public\assets\BG.jpeg"
                   alt="Syed Qasim Ali"
                   className="h-full w-full object-cover object-top"
                 />
