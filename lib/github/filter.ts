@@ -6,7 +6,6 @@ const SHOW_REPOS = new Set([
   "s-q-creator-studio",
   "leads",
   "migration-in-ghl",
-  "otp-extractor",
 ]);
 
 function shouldSkip(repo: GitHubRepo): boolean {

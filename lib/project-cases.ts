@@ -49,12 +49,4 @@ export const projectCases: ProjectCase[] = [
     method: "Python with GHL API, data transformation, validation, and rollback mechanisms.",
     outcome: "Automated migration for 100+ businesses. Zero data loss during transfers.",
   },
-  {
-    name: "OTP-Extractor",
-    problem: "Users need to extract OTPs from messages automatically for verification workflows.",
-    role: "Full-stack developer — built OTP extraction engine, message parsing, auto-fill system.",
-    method: "JavaScript with message parsing, regex-based OTP detection, browser extension integration.",
-    outcome: "95% OTP detection accuracy. Supports SMS, email, and messaging platforms.",
-    demo: "https://otp-extractor.vercel.app",
-  },
 ];
