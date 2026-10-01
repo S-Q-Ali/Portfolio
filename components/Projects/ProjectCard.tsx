@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Star, GitFork, ExternalLink, Code, Play } from "lucide-react";
+import { Star, GitFork, Code, Play } from "lucide-react";
 import type { PortfolioProject } from "@/lib/github/types";
 import { projectCases } from "@/lib/project-cases";
 import GoldBadge from "@/components/GoldBadge/GoldBadge";
@@ -73,6 +73,19 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           <div>
             <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Outcome</p>
             <p className="mt-1 text-sm text-text-dim">{caseStudy.outcome}</p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Tech Stack</p>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {caseStudy.techStack.map((tech) => (
+                <span
+                  key={tech}
+                  className="rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent-glow border border-accent/20"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
           </div>
         </motion.div>
       )}
