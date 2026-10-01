@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { MapPin, Users, BookOpen, Shield } from "lucide-react";
 import type { GitHubUser } from "@/lib/github/types";
+import hero from "@/assets/BG.jpeg";
 
 interface HeroProps {
   user: GitHubUser;
@@ -66,7 +67,7 @@ export default function Hero({ user }: HeroProps) {
             <div className="glass-panel relative overflow-hidden rounded-2xl">
               <div className="aspect-[3/4] w-full">
                 <img
-                  src="Portfolio\public\assets\BG.jpeg"
+                  src={`/${hero}`}
                   alt="Syed Qasim Ali"
                   className="h-full w-full object-cover object-top"
                 />
