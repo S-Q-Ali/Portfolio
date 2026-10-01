@@ -106,15 +106,17 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               Launch
             </a>
           )}
-          <a
-            href={project.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent-glow border border-accent/30 hover:bg-accent/20 transition-colors"
-          >
-            <Code className="h-3 w-3" />
-            Code
-          </a>
+          {!caseStudy?.isPrivate && (
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1 rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent-glow border border-accent/30 hover:bg-accent/20 transition-colors"
+            >
+              <Code className="h-3 w-3" />
+              Code
+            </a>
+          )}
         </div>
       </div>
     </motion.article>

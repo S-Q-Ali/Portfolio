@@ -7,6 +7,7 @@ export interface ProjectCase {
   techStack: string[];
   demo?: string;
   featured?: boolean;
+  isPrivate?: boolean;
 }
 
 export const projectCases: ProjectCase[] = [
@@ -28,6 +29,7 @@ export const projectCases: ProjectCase[] = [
     techStack: ["HTML", "CSS", "JavaScript", "Vercel"],
     demo: "https://flowpost-studio.vercel.app",
     featured: true,
+    isPrivate: true,
   },
   {
     name: "S-Q-Creator-Studio",
@@ -46,6 +48,7 @@ export const projectCases: ProjectCase[] = [
     outcome: "Streamlined lead tracking for sales teams. 35% improvement in follow-up response time.",
     techStack: ["JavaScript", "Node.js", "Automation"],
     demo: "https://leads-d3k9.vercel.app/",
+    isPrivate: true,
   },
   {
     name: "Migration-in-GHL",
@@ -54,5 +57,6 @@ export const projectCases: ProjectCase[] = [
     method: "Python with GHL API, data transformation, validation, and rollback mechanisms.",
     outcome: "Automated migration for 100+ businesses. Zero data loss during transfers.",
     techStack: ["Python", "GHL API", "Data Migration"],
+    isPrivate: true,
   },
 ];
