@@ -1,31 +1,17 @@
 import type { GitHubRepo, PortfolioProject } from "./types";
 
-const SKIP_PATTERNS = [
-  /^s-q-ali$/i,
-  /^portfolio$/i,
-  /readme/i,
-  /user-guide/i,
-  /userguide/i,
-  /course/i,
-  /internship/i,
-  /practice/i,
-  /demo/i,
-  /scratch/i,
-  /test-repo/i,
-  /hello-world/i,
-  /my-first/i,
-  /js-basics/i,
-  /web-based-projects$/i,
-];
+const SHOW_REPOS = new Set([
+  "youtube-creator-tool",
+  "flowpost-studio",
+  "s-q-creator-studio",
+  "leads",
+  "migration-in-ghl",
+  "otp-extractor",
+]);
 
 function shouldSkip(repo: GitHubRepo): boolean {
   if (repo.fork || repo.archived) return true;
-  if (SKIP_PATTERNS.some((p) => p.test(repo.name))) return true;
-  if (!repo.description && repo.stargazers_count === 0 && repo.forks_count === 0) {
-    const daysSinceUpdate = (Date.now() - new Date(repo.updated_at).getTime()) / (1000 * 60 * 60 * 24);
-    if (daysSinceUpdate > 60) return true;
-  }
-  return false;
+  return !SHOW_REPOS.has(repo.name.toLowerCase());
 }
 
 function calculateScore(repo: GitHubRepo): number {
