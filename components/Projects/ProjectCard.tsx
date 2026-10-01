@@ -90,7 +90,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
               className="flex items-center gap-1 rounded-md bg-gold/10 px-3 py-1.5 text-xs font-medium text-gold border border-gold/30 hover:bg-gold/20 transition-colors"
             >
               <Play className="h-3 w-3" />
-              Live Demo
+              Launch
             </a>
           )}
           <a
