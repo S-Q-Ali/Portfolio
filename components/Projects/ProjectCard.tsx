@@ -3,15 +3,26 @@
 import { motion } from "framer-motion";
 import { Star, GitFork, Code, Play } from "lucide-react";
 import type { PortfolioProject } from "@/lib/github/types";
+import type { LanguageStat } from "@/lib/github/languages";
 import { projectCases } from "@/lib/project-cases";
 import GoldBadge from "@/components/GoldBadge/GoldBadge";
 
 interface ProjectCardProps {
   project: PortfolioProject;
+  languages?: LanguageStat[];
   index?: number;
 }
 
-export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+const languageColors: Record<string, string> = {
+  TypeScript: "bg-blue-500/10 text-blue-400 border-blue-500/30",
+  JavaScript: "bg-yellow-500/10 text-yellow-400 border-yellow-500/30",
+  HTML: "bg-orange-500/10 text-orange-400 border-orange-500/30",
+  Python: "bg-green-500/10 text-green-400 border-green-500/30",
+  CSS: "bg-purple-500/10 text-purple-400 border-purple-500/30",
+  Shell: "bg-gray-500/10 text-gray-400 border-gray-500/30",
+};
+
+export default function ProjectCard({ project, languages = [], index = 0 }: ProjectCardProps) {
   const caseStudy = projectCases.find(
     (c) => c.name.toLowerCase() === project.name.toLowerCase()
   );
@@ -74,19 +85,23 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
             <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Outcome</p>
             <p className="mt-1 text-sm text-text-dim">{caseStudy.outcome}</p>
           </div>
-          <div>
-            <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Tech Stack</p>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {caseStudy.techStack.map((tech) => (
-                <span
-                  key={tech}
-                  className="rounded-md bg-accent/10 px-2 py-1 text-xs font-medium text-accent-glow border border-accent/20"
-                >
-                  {tech}
-                </span>
-              ))}
+          {languages.length > 0 && (
+            <div>
+              <p className="text-xs font-semibold text-accent-glow uppercase tracking-wider">Languages</p>
+              <div className="mt-2 flex flex-wrap gap-2">
+                {languages.map((lang) => (
+                  <span
+                    key={lang.name}
+                    className={`rounded-md px-2 py-1 text-xs font-medium border ${
+                      languageColors[lang.name] || "bg-accent/10 text-accent-glow border-accent/20"
+                    }`}
+                  >
+                    {lang.name} {lang.percentage}%
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </motion.div>
       )}
 
