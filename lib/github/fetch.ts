@@ -39,9 +39,11 @@ function getGitHubHeaders(): HeadersInit {
 }
 
 export async function fetchGitHubRepos(): Promise<GitHubRepo[]> {
-  const url = `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
+  const endpoint = process.env.GITHUB_TOKEN
+    ? `${GITHUB_API_BASE}/user/repos?per_page=100&sort=updated`
+    : `${GITHUB_API_BASE}/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`;
 
-  const response = await fetch(url, {
+  const response = await fetch(endpoint, {
     headers: getGitHubHeaders(),
     next: { revalidate: 3600 },
   });
