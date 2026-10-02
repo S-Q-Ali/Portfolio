@@ -4,13 +4,19 @@ import { useState, useMemo } from "react";
 import ProjectGrid from "@/components/Projects/ProjectGrid";
 import ProjectFilters from "@/components/Projects/ProjectFilters";
 import type { PortfolioProject } from "@/lib/github/types";
+import type { LanguageStat } from "@/lib/github/languages";
 
 interface ProjectsClientProps {
   projects: PortfolioProject[];
   languages: string[];
+  repoLanguages: Record<string, LanguageStat[]>;
 }
 
-export default function ProjectsClient({ projects, languages }: ProjectsClientProps) {
+export default function ProjectsClient({
+  projects,
+  languages,
+  repoLanguages,
+}: ProjectsClientProps) {
   const [selectedLanguage, setSelectedLanguage] = useState<string | null>(null);
 
   const filteredProjects = useMemo(() => {
@@ -36,7 +42,7 @@ export default function ProjectsClient({ projects, languages }: ProjectsClientPr
           onSelect={setSelectedLanguage}
         />
 
-        <ProjectGrid projects={filteredProjects} />
+        <ProjectGrid projects={filteredProjects} repoLanguages={repoLanguages} />
       </div>
     </div>
   );

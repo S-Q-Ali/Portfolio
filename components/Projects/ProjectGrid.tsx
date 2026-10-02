@@ -1,31 +1,15 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import type { PortfolioProject } from "@/lib/github/types";
 import type { LanguageStat } from "@/lib/github/languages";
-import { fetchRepoLanguages } from "@/lib/github/languages";
 import ProjectCard from "./ProjectCard";
 
 interface ProjectGridProps {
   projects: PortfolioProject[];
+  repoLanguages?: Record<string, LanguageStat[]>;
 }
 
-export default function ProjectGrid({ projects }: ProjectGridProps) {
-  const [languages, setLanguages] = useState<Record<string, LanguageStat[]>>({});
-
-  useEffect(() => {
-    const loadLanguages = async () => {
-      const entries = await Promise.all(
-        projects.map(async (p) => {
-          const langs = await fetchRepoLanguages(p.name);
-          return [p.name, langs] as const;
-        })
-      );
-      setLanguages(Object.fromEntries(entries));
-    };
-    loadLanguages();
-  }, [projects]);
-
+export default function ProjectGrid({ projects, repoLanguages = {} }: ProjectGridProps) {
   if (projects.length === 0) {
     return (
       <div className="rounded-md border border-border bg-surface p-12 text-center">
@@ -40,7 +24,7 @@ export default function ProjectGrid({ projects }: ProjectGridProps) {
         <ProjectCard
           key={project.id}
           project={project}
-          languages={languages[project.name] || []}
+          languages={repoLanguages[project.name] || []}
           index={index}
         />
       ))}

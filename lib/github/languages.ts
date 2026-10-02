@@ -45,3 +45,14 @@ export async function fetchRepoLanguages(repoName: string): Promise<LanguageStat
     .sort((a, b) => b.bytes - a.bytes)
     .slice(0, 4);
 }
+
+export async function fetchRepoLanguagesMap(
+  repoNames: string[]
+): Promise<Record<string, LanguageStat[]>> {
+  const entries = await Promise.all(
+    repoNames.map(
+      async (name) => [name, await fetchRepoLanguages(name)] as const
+    )
+  );
+  return Object.fromEntries(entries);
+}
