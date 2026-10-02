@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import Hero from "@/components/Hero/Hero";
 import HeroSkeleton from "@/components/Hero/HeroSkeleton";
-import ProjectGrid from "@/components/Projects/ProjectGrid";
+import FeaturedCarousel from "@/components/Projects/FeaturedCarousel";
 import SkillsSection from "@/components/Skills/SkillsSection";
 import StrengthsSection from "@/components/Strengths/StrengthsSection";
 import { fetchGitHubRepos, fetchGitHubUser } from "@/lib/github/fetch";
@@ -25,7 +25,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
-              Best <span className="text-accent">Projects</span>
+              Featured <span className="text-accent">Projects</span>
             </h2>
             <a
               href="/projects"
@@ -35,7 +35,7 @@ export default async function HomePage() {
             </a>
           </div>
           <div className="mt-8">
-            <ProjectGrid projects={topProjects} repoLanguages={repoLanguages} />
+            <FeaturedCarousel projects={topProjects} repoLanguages={repoLanguages} />
           </div>
         </div>
       </section>

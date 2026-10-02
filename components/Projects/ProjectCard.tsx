@@ -26,6 +26,7 @@ export default function ProjectCard({ project, languages = [], index = 0 }: Proj
   const caseStudy = projectCases.find(
     (c) => c.name.toLowerCase() === project.name.toLowerCase()
   );
+  const openUrl = caseStudy?.demo ?? project.url;
 
   return (
     <motion.article
@@ -33,19 +34,19 @@ export default function ProjectCard({ project, languages = [], index = 0 }: Proj
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="glass-panel glass-panel-hover group rounded-lg p-6"
+      className="glass-panel glass-panel-hover group relative rounded-lg p-6"
     >
+      <a
+        href={openUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`Open ${project.name}`}
+        className="absolute inset-0 rounded-lg"
+      />
       <div className="flex items-start justify-between gap-4">
         <div className="flex items-center gap-2">
-          <h3 className="text-lg font-semibold">
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-text transition-colors hover:text-accent-glow"
-            >
-              {project.name}
-            </a>
+          <h3 className="text-lg font-semibold text-text transition-colors group-hover:text-accent-glow">
+            {project.name}
           </h3>
           {caseStudy?.featured && <GoldBadge />}
         </div>
@@ -105,7 +106,7 @@ export default function ProjectCard({ project, languages = [], index = 0 }: Proj
         </motion.div>
       )}
 
-      <div className="mt-4 flex items-center justify-between">
+      <div className="relative z-10 mt-4 flex items-center justify-between">
         <span className="inline-flex items-center rounded-md bg-surface-light px-2 py-1 font-mono text-xs text-accent-glow">
           {project.language}
         </span>
@@ -115,7 +116,9 @@ export default function ProjectCard({ project, languages = [], index = 0 }: Proj
               href={caseStudy.demo}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-md bg-gold/10 px-3 py-1.5 text-xs font-medium text-gold border border-gold/30 hover:bg-gold/20 transition-colors"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="pointer-events-none flex items-center gap-1 rounded-md bg-gold/10 px-3 py-1.5 text-xs font-medium text-gold border border-gold/30"
             >
               <Play className="h-3 w-3" />
               Launch
@@ -126,7 +129,9 @@ export default function ProjectCard({ project, languages = [], index = 0 }: Proj
               href={project.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent-glow border border-accent/30 hover:bg-accent/20 transition-colors"
+              tabIndex={-1}
+              aria-hidden="true"
+              className="pointer-events-none flex items-center gap-1 rounded-md bg-accent/10 px-3 py-1.5 text-xs font-medium text-accent-glow border border-accent/30"
             >
               <Code className="h-3 w-3" />
               Code
